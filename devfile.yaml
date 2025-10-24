@@ -11,7 +11,7 @@
         exec:
           component: python
           commandLine: "python_test_file.py"
-          workingDir: "${CHE_PROJECTS_ROOT}/pythonTest"
+          workingDir: "${CHE_PROJECTS_ROOT}/"
     projects:
       - name: pythonTest
         git:
