@@ -1,0 +1,19 @@
+    schemaVersion: 2.2.0
+    metadata:
+      name: python-script-example
+    components:
+      - name: python
+        container:
+          image: python:3.9-slim-buster
+          command: ["tail", "-f", "/dev/null"]
+    commands:
+      - id: run-script
+        exec:
+          component: python
+          commandLine: "python_test_file.py"
+          workingDir: "${CHE_PROJECTS_ROOT}/pythonTest"
+    projects:
+      - name: pythonTest
+        git:
+          remotes:
+            origin: "https://github.com/KarahAllen/EclipseCheTest.git"
