@@ -1,20 +1,26 @@
-projects:
-  - name: my-python-project
-    source:
-      type: git
-      location: 'https://github.com/KarahAllen/EclipseCheTest.git' # Replace with your project's URL
-
+schemaVersion: 2.2.2
+metadata:
+  name: python-test
 components:
-  - type: dockerimage
-    alias: python
-    image: 'quay.io/eclipse/che-python-3.6:nightly' # Or another suitable Python image
-    memoryLimit: 512Mi
-    mountSources: true
+  - name: tools
+    container:
+      image: quay.io/devfile/universal-developer-image:ubi9-latest
+      volumeMounts:
+        - name: venv
+          path: /home/user/.venv
+      memoryLimit: 512Mi
+      mountSources: true
+
+  - name: venv
+    volume:
+      size: 1G
 
 commands:
-  - name: run-my-script
-    actions:
-      - type: exec
-        component: python
-        command: python python_test_file.py # Replace with your script's name
-        workdir: '${CHE_PROJECTS_ROOT}/my-python-project' # Adjust workdir if needed
+  - id: run-application
+    exec:
+      label: "Run application"
+      component: tools
+      workingDir: ${PROJECT_SOURCE}
+      commandLine: "python3 hello-world.py"
+      group:
+        kind: run
