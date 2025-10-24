@@ -1,19 +1,20 @@
-    schemaVersion: 2.2.0
-    metadata:
-      name: python-script-example
-    components:
-      - name: python
-        container:
-          image: python:3.9-slim-buster
-          command: ["tail", "-f", "/dev/null"]
-    commands:
-      - id: run-script
-        exec:
-          component: python
-          commandLine: "python_test_file.py"
-          workingDir: "${CHE_PROJECTS_ROOT}/pythonTest"
-    projects:
-      - name: pythonTest
-        git:
-          remotes:
-            origin: "https://github.com/KarahAllen/EclipseCheTest.git"
+projects:
+  - name: my-python-project
+    source:
+      type: git
+      location: 'https://github.com/KarahAllen/EclipseCheTest.git' # Replace with your project's URL
+
+components:
+  - type: dockerimage
+    alias: python
+    image: 'quay.io/eclipse/che-python-3.6:nightly' # Or another suitable Python image
+    memoryLimit: 512Mi
+    mountSources: true
+
+commands:
+  - name: run-my-script
+    actions:
+      - type: exec
+        component: python
+        command: python python_test_file.py # Replace with your script's name
+        workdir: '${CHE_PROJECTS_ROOT}/my-python-project' # Adjust workdir if needed
