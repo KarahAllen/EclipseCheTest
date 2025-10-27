@@ -7,7 +7,7 @@ projects:
 components:
   - type: dockerimage
     alias: python
-    image: quay.io/devfile/universal-developer-image:ubi9-latest
+    image:  https://registry.devfile.io/viewer/devfiles/community/python #quay.io/devfile/universal-developer-image:ubi9-latest
     volumeMounts:
         - name: venv
           path: /home/user/.venv
