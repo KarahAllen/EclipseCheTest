@@ -7,12 +7,10 @@ projects:
 components:
   - type: dockerimage
     alias: python
-    image:
-      imageName: python-image:latest
-      dockerfile:
-        uri: docker/Dockerfile
-        buildContext: .
-        rootRequired: false
+    image: quay.io/devfile/universal-developer-image:ubi9-latest
+    volumeMounts:
+        - name: venv
+          path: /home/user/.venv
     memoryLimit: 512Mi
     mountSources: true
 
@@ -21,5 +19,5 @@ commands:
     actions:
       - type: exec
         component: python
-        command: python python_test_file.py # Replace with your script's name
+        command: python python_test_file.py
         workdir: '${CHE_PROJECTS_ROOT}/my-python-project' # Adjust workdir if needed
