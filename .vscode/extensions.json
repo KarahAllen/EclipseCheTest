@@ -8,6 +8,6 @@
     "GitHub.vscode-pull-request-github",
     "redhat.vscode-yaml",
     "timonwong.shellcheck",
-    "Microsoft.python"
+    "ms-python.python"
   ]
 }
