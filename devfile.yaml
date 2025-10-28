@@ -15,9 +15,8 @@ components:
     mountSources: true
 
 commands:
-  - name: run-my-script
-    actions:
-      - type: exec
-        component: python
-        command: python python_test_file.py
-        workdir: '${CHE_PROJECTS_ROOT}/my-python-project' # Adjust workdir if needed
+  - id: createvenv
+    exec:
+      component: python
+      command: virtualenv myvenv && myvenv/bin/pip install -r requirements.txt
+      workdir: '${CHE_PROJECTS_ROOT}/my-python-project' # Adjust workdir if needed
