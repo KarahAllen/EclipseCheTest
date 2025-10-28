@@ -14,9 +14,43 @@ components:
     memoryLimit: 512Mi
     mountSources: true
 
+components:
+  - name: jupyter-notebook
+    container:
+      image: jupyter/base-notebook
+      args: ['jupyter', 'lab', '--ip=0.0.0.0', '--allow-root']
+      
 commands:
-  - id: createvenv
+  - id: createenv
     exec:
       component: python
       command: virtualenv myvenv && myvenv/bin/pip install -r requirements.txt
       workdir: '${CHE_PROJECTS_ROOT}/my-python-project' # Adjust workdir if needed
+
+  - id: install-kernel
+    exec:
+      component: jupyter-notebook
+      commandLine: |
+        pip install ipykernel
+        python -m ipykernel install --user --name=my-kernel --display-name="My Custom Python Kernel"
+
+  - id: set-default-kernel
+    exec:
+      component: jupyter-notebook
+      commandLine: |
+        mkdir -p /home/user/.jupyter
+        echo "c.KernelManager.default_kernel_name = 'my-kernel'" > /home/user/.jupyter/jupyter_notebook_config.py
+      workingDir: /home/user
+
+  - id: setup-jupyter
+    composite:
+      commands:
+        - install-kernel
+        - set-default-kernel
+      group:
+        kind: run
+        isDefault: true
+events:
+  postStart:
+    - createenv
+    - setup-jupyter
