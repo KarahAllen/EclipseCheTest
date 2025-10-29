@@ -22,8 +22,8 @@ commands:
     exec:
       component: python-image
       command: python -m virtualenv .venv && source .venv/bin/activate && .venv/bin/pip install -r requirements.txt
-      workdir: /projects/main # Adjust workdir if needed
-    group:
+      workingdir: ${PROJECT_SOURCE} # Adjust workdir if needed
+      group:
         kind: run
         isDefault: true
   - id: install-kernel
