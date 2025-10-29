@@ -21,9 +21,11 @@ commands:
   - id: createenv
     exec:
       component: python
-      command: virtualenv myvenv && myvenv/bin/pip install -r requirements.txt
+      command: python3 -m venv .venv && source .venv/bin/activate && .venv/bin/pip install -r requirements.txt
       workdir: '${CHE_PROJECTS_ROOT}/my-python-project' # Adjust workdir if needed
-
+    group:
+        kind: run
+        isDefault: true
   - id: install-kernel
     exec:
       component: jupyter-notebook
