@@ -5,16 +5,13 @@ projects:
       location: 'https://github.com/KarahAllen/EclipseCheTest.git' # Replace with your project's URL
 
 components:
-  - type: dockerimage
-    alias: python
+  - name: python-image
     image:  https://registry.devfile.io/viewer/devfiles/community/python #quay.io/devfile/universal-developer-image:ubi9-latest
-    volumeMounts:
-        - name: venv
-          path: /home/user/.venv
-    memoryLimit: 512Mi
-    mountSources: true
+    dockerfile:
+        args:
+          - --build-arg=PROJECT_NAME=my-python-project
+        uri: Dockerfile
 
-components:
   - name: jupyter-notebook
     container:
       image: jupyter/base-notebook
