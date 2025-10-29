@@ -17,6 +17,10 @@ components:
   - name: python-tools
     container:
       image: quay.io/devfile/universal-developer-image:ubi9-latest
+      dockerfile:
+        args:
+          - --build-arg=PROJECT_NAME=my-python-project
+        uri: Dockerfile
       # memoryLimit: 2Gi
       # mountSources: true
       command: ["sleep", "infinity"]
