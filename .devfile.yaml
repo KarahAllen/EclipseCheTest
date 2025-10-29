@@ -11,8 +11,8 @@ components:
   - name: python-tools
     container:
       image: quay.io/devfile/universal-developer-image:latest
-      memoryLimit: 2Gi
-      mountSources: true
+      # memoryLimit: 2Gi
+      # mountSources: true
       command: ["sleep", "infinity"]
       sourceMapping: /projects
       endpoints:
@@ -24,16 +24,16 @@ components:
       env:
         - name: JUPYTER_TOKEN
           value: "che"
-    attributes:
-      pod-overrides:
-        spec:
-          containers:
-            - name: python-tools
-              workingDir: /projects
-  - name: requirements
-    volume:
-      size: 1Gi
-      ephemeral: true
+    #attributes:
+     # pod-overrides:
+        #spec:
+          #containers:
+            #- name: python-tools
+              #workingDir: /projects
+  #- name: requirements
+    #volume:
+      #size: 1Gi
+      #ephemeral: true
 
 commands:
   - id: install-requirements
