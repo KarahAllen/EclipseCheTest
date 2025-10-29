@@ -20,7 +20,7 @@ components:
 commands:
   - id: createenv
     exec:
-      component: python
+      component: python-image
       commandLine: |
         python -m virtualenv .venv
         source .venv/bin/activate
