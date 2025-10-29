@@ -1,7 +1,6 @@
-schemaVersion: 2.3.0
+schemaVersion: 2.2.0
 metadata:
   name: python-jupyter-workspace
-  version: 1.0.0
   displayName: Python with Jupyter Notebook
   description: Eclipse Che workspace for Python development with Jupyter and requirements.txt support
   language: python
