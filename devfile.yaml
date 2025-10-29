@@ -10,7 +10,7 @@ components:
     dockerfile:
         args:
           - --build-arg=PROJECT_NAME=my-python-project
-        uri: Dockerfile
+        uri: https://github.com/KarahAllen/EclipseCheTest/blob/main/Dockerfile
 
   - name: jupyter-notebook
     container:
