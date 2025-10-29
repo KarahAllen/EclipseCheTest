@@ -10,9 +10,9 @@ metadata:
 
 projects:
   - name: my-python-project
-    source:
-      type: git
-      location: 'https://github.com/KarahAllen/EclipseCheTest.git' # Replace with your project's URL
+    git:
+      remotes:
+        origin: https://github.com/KarahAllen/EclipseCheTest/tree/main
 components:
   - name: python-tools
     container:
