@@ -21,7 +21,7 @@ projects:
 components:
   - name: py
     container:
-      image: registry.access.redhat.com/ubi9/python-39:1-1743091356
+      image: quay.io/devfile/universal-developer-image:ubi9-latest
       args: ['tail', '-f', '/dev/null']
       mountSources: true
       endpoints:
