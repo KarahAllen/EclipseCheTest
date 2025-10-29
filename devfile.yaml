@@ -25,7 +25,7 @@ commands:
         python -m virtualenv .venv
         source .venv/bin/activate
         .venv/bin/pip install -r requirements.txt
-      workdir: projects/main # Adjust workdir if needed
+      workdir: projects/ # Adjust workdir if needed
     group:
         kind: run
         isDefault: true
