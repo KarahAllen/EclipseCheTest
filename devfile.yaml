@@ -21,10 +21,7 @@ commands:
   - id: createenv
     exec:
       component: python-image
-      commandLine: |
-        python -m virtualenv .venv
-        source .venv/bin/activate
-        .venv/bin/pip install -r requirements.txt
+      command: python -m virtualenv .venv && source .venv/bin/activate && .venv/bin/pip install -r requirements.txt
       workdir: /projects/main # Adjust workdir if needed
     group:
         kind: run
