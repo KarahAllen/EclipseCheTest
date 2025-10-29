@@ -14,26 +14,23 @@ projects:
       remotes:
         origin: https://github.com/KarahAllen/EclipseCheTest/tree/main
 components:
-  - name: python-tools
-    container:
-      image: quay.io/devfile/universal-developer-image:ubi9-latest
-      dockerfile:
-        args:
-          - --build-arg=PROJECT_NAME=my-python-project
-        uri: Dockerfile
-      # memoryLimit: 2Gi
-      # mountSources: true
-      command: ["sleep", "infinity"]
-      sourceMapping: /projects
-      endpoints:
-        - name: jupyter
-          targetPort: 8888
-          exposure: public
-          protocol: http
-          path: /
-      env:
-        - name: JUPYTER_TOKEN
-          value: "che"
+  - type: dockerimage
+    alias: python
+    image:  https://registry.devfile.io/viewer/devfiles/community/python #quay.io/devfile/universal-developer-image:ubi9-latest
+    volumeMounts:
+        - name: venv
+          path: /home/user/.venv
+    memoryLimit: 512Mi
+    mountSources: true
+    endpoints:
+      - name: jupyter
+        targetPort: 8888
+        exposure: public
+        protocol: http
+        path: /
+    env:
+      - name: JUPYTER_TOKEN
+        value: "che"
     #attributes:
      # pod-overrides:
         #spec:
