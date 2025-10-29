@@ -7,10 +7,16 @@ metadata:
   language: python
   projectType: python
   tags: [python, jupyter, che]
+
+projects:
+  - name: my-python-project
+    source:
+      type: git
+      location: 'https://github.com/KarahAllen/EclipseCheTest.git' # Replace with your project's URL
 components:
   - name: python-tools
     container:
-      image: quay.io/devfile/universal-developer-image:latest
+      image: quay.io/devfile/universal-developer-image:ubi9-latest
       # memoryLimit: 2Gi
       # mountSources: true
       command: ["sleep", "infinity"]
@@ -56,8 +62,3 @@ commands:
         kind: run
         isDefault: true
 
-projects:
-  - name: python-sample
-    git:
-      remotes:
-        origin: https://github.com/KarahAllen/EclipseCheTest/tree/main
