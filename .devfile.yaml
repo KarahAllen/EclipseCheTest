@@ -1,0 +1,63 @@
+schemaVersion: 2.3.0
+metadata:
+  name: python-jupyter-workspace
+  version: 1.0.0
+  displayName: Python with Jupyter Notebook
+  description: Eclipse Che workspace for Python development with Jupyter and requirements.txt support
+  language: python
+  projectType: python
+  tags: [python, jupyter, che]
+components:
+  - name: python-tools
+    container:
+      image: quay.io/devfile/universal-developer-image:latest
+      memoryLimit: 2Gi
+      mountSources: true
+      command: ["sleep", "infinity"]
+      sourceMapping: /projects
+      endpoints:
+        - name: jupyter
+          targetPort: 8888
+          exposure: public
+          protocol: http
+          path: /
+      env:
+        - name: JUPYTER_TOKEN
+          value: "che"
+    attributes:
+      pod-overrides:
+        spec:
+          containers:
+            - name: python-tools
+              workingDir: /projects
+  - name: requirements
+    volume:
+      size: 1Gi
+      ephemeral: true
+
+commands:
+  - id: install-requirements
+    exec:
+      label: "Install Python dependencies"
+      component: python-tools
+      commandLine: "pip install -r requirements.txt"
+      workingDir: /projects
+      group:
+        kind: build
+        isDefault: true
+
+  - id: start-jupyter
+    exec:
+      label: "Start Jupyter Notebook"
+      component: python-tools
+      commandLine: "jupyter notebook --ip=0.0.0.0 --port=8888 --no-browser --allow-root --NotebookApp.token=${JUPYTER_TOKEN}"
+      workingDir: /projects
+      group:
+        kind: run
+        isDefault: true
+
+projects:
+  - name: python-sample
+    git:
+      remotes:
+        origin: "https://github.com/devfile-samples/python-hello-world.git"
