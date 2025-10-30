@@ -3,5 +3,5 @@ numpy
 matplotlib
 plotly
 PyQt6
-tkinter
+pygame
 ipykernel
