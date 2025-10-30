@@ -8,7 +8,7 @@ ENV FLASK_PORT=8081
 WORKDIR /projects
 
 # Copy the content of the local src directory to the working directory
-COPY https://github.com/KarahAllen/EclipseCheTest/tree/main
+COPY https://github.com/KarahAllen/EclipseCheTest/tree/main .
 
 # Install any dependencies
 RUN \
