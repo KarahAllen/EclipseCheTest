@@ -58,5 +58,6 @@ commands:
         isDefault: true
 events:
   postStart:
+    - build-docker
     - createenv
     - setup-jupyter
