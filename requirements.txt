@@ -4,5 +4,6 @@ matplotlib
 plotly
 PyQt6
 pygame
+python3-tk
 tkinter
 ipykernel
