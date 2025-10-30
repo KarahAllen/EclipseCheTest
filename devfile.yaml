@@ -18,6 +18,13 @@ components:
       args: ['jupyter', 'lab', '--ip=0.0.0.0', '--allow-root']
       
 commands:
+  - id: build-docker
+    exec:
+      component: python-image
+      command: docker build .
+      group:
+        kind: run
+        isDefault: true
   - id: createenv
     exec:
       component: python-image
