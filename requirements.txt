@@ -2,6 +2,6 @@ pandas
 numpy
 matplotlib
 plotly
-#PyQt6
-#pygame
+PyQt6
+pygame
 ipykernel
