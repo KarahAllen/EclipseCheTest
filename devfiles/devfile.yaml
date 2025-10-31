@@ -1,0 +1,63 @@
+projects:
+  - name: my-python-project
+    source:
+      type: git
+      location: 'https://github.com/KarahAllen/EclipseCheTest.git' # Replace with your project's URL
+
+components:
+  - name: python-image
+    image:  https://registry.devfile.io/viewer/devfiles/community/python #quay.io/devfile/universal-developer-image:ubi9-latest
+    dockerfile:
+        args:
+          - --build-arg=PROJECT_NAME=my-python-project
+        uri: https://github.com/KarahAllen/EclipseCheTest/blob/main/Dockerfile
+
+  - name: jupyter-notebook
+    container:
+      image: jupyter/base-notebook
+      args: ['jupyter', 'lab', '--ip=0.0.0.0', '--allow-root']
+      
+commands:
+  - id: build-docker
+    exec:
+      component: python-image
+      command: docker build .
+      group:
+        kind: run
+        isDefault: true
+  - id: createenv
+    exec:
+      component: python-image
+      command: python -m virtualenv .venv && source .venv/bin/activate && .venv/bin/pip install -r requirements.txt
+      workingdir: ${PROJECT_SOURCE} # Adjust workdir if needed
+      group:
+        kind: run
+        isDefault: true
+  - id: install-kernel
+    exec:
+      component: jupyter-notebook
+      commandLine: |
+        pip install ipykernel
+        python -m ipykernel install --user --name=my-kernel --display-name="My Custom Python Kernel"
+
+  - id: set-default-kernel
+    exec:
+      component: jupyter-notebook
+      commandLine: |
+        mkdir -p /home/user/.jupyter
+        echo "c.KernelManager.default_kernel_name = 'my-kernel'" > /home/user/.jupyter/jupyter_notebook_config.py
+      workingDir: /home/user
+
+  - id: setup-jupyter
+    composite:
+      commands:
+        - install-kernel
+        - set-default-kernel
+      group:
+        kind: run
+        isDefault: true
+events:
+  postStart:
+    - build-docker
+    - createenv
+    - setup-jupyter
