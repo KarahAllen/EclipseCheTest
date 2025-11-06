@@ -35,17 +35,6 @@ components:
       env:
         - name: DEBUG_PORT
           value: '5858'
- # - name: python-image
-  #  image:  https://registry.devfile.io/viewer/devfiles/community/python #quay.io/devfile/universal-developer-image:ubi9-latest
-  #  dockerfile:
-    #    args:
-     #     - --build-arg=PROJECT_NAME=my-python-project
-     #   uri: https://github.com/KarahAllen/EclipseCheTest/blob/main/Dockerfile
-
-  - name: jupyter-notebook
-    container:
-      image: jupyter/base-notebook
-      args: ['jupyter', 'lab', '--ip=0.0.0.0', '--allow-root']
       
 commands:
   - id: pip-install-requirements
