@@ -40,18 +40,18 @@ commands:
   - id: create-venv
     exec:
       component: py
-      commandLine: python3 -m venv .venv
+      commandLine: "python3 -m venv .venv"
       workingDir: ${PROJECT_SOURCE}
 
   - id: activate-venv
     exec:
       component: py
-      commandLine: source .venv/bin/activate
+      commandLine: "source .venv/bin/activate"
       workingDir: ${PROJECT_SOURCE}
   
   - id: pip-install-requirements
     exec:
-      commandLine: pip install -r requirements.txt
+      commandLine: "pip install -r requirements.txt"
       workingDir: ${PROJECT_SOURCE}
       component: py
 
