@@ -40,7 +40,7 @@ commands:
   - id: create-venv
     exec:
       component: py
-      commandLine: "/usr/bin/python3 -m venv .venv"
+      commandLine: "python -m venv .venv"
       workingDir: ${PROJECT_SOURCE}
 
   - id: activate-venv
