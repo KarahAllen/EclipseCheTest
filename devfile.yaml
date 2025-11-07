@@ -62,7 +62,7 @@ commands:
         - activate-venv
         - pip-install-requirements
       group:
-        kind: build
+        kind: run
         isDefault: true
       
   - id: debug-py
