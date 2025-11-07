@@ -41,18 +41,18 @@ commands:
     exec:
       component: py
       commandLine: "python3 -m venv .venv"
-      workingDir: /projects/my-python-project
+      workingDir: ${PROJECT_SOURCE}
 
   - id: activate-venv
     exec:
       component: py
       commandLine: "source .venv/bin/activate"
-      workingDir: /projects/my-python-project
+      workingDir: ${PROJECT_SOURCE}
   
   - id: pip-install-requirements
     exec:
       commandLine: "pip install -r requirements.txt"
-      workingDir: /projects/my-python-project
+      workingDir: ${PROJECT_SOURCE}
       component: py
 
   - id: setup-env
@@ -68,7 +68,7 @@ commands:
   - id: debug-py
     exec:
       commandLine: 'pip install debugpy && python -m debugpy --listen 0.0.0.0:${DEBUG_PORT} pythonChart.py'
-      workingDir: /projects/my-python-project
+      workingDir: ${PROJECT_SOURCE}
       component: py
       group:
         kind: debug
