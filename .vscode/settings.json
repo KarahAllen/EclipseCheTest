@@ -3,6 +3,8 @@
   "python.terminal.activateEnvInCurrentTerminal": true
   "jupyter.kernels.excludePythonEnvironments": [
     "/bin/python3.11",
-    "/usr/bin/python3.11"
+    "/usr/bin/python3.11",
+    "/bin/python3",
+    "/usr/bin/python3"
   ]
 }
