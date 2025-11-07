@@ -2,7 +2,7 @@
   "python.defaultInterpreterPath": "/projects/my-python-project/.venv/bin/python"
   "python.terminal.activateEnvInCurrentTerminal": true
   "jupyter.kernels.excludePythonEnvironments": [
-    "/bin/python3",
-    "/usr/bin/python3"
+    "/bin/python3.11",
+    "/usr/bin/python3.11"
   ]
 }
