@@ -32,10 +32,6 @@ components:
         - exposure: none
           name: debug
           targetPort: 5858
-      attributes:
-        settings:
-          python.defaultInterpreterPath: .venv/bin/python
-          python.terminal.activateEnvInCurrentTerminal: true
       env:
         - name: DEBUG_PORT
           value: '5858'
