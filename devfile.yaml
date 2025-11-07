@@ -37,33 +37,33 @@ components:
           value: '5858'
       
 commands:
-  - id: create-venv
-    exec:
-      component: py
-      commandLine: "python -m venv .venv"
-      workingDir: ${PROJECT_SOURCE}
+  #- id: create-venv
+   # exec:
+     # component: py
+     # commandLine: "python -m venv .venv"
+   #   workingDir: ${PROJECT_SOURCE}
 
-  - id: activate-venv
-    exec:
-      component: py
-      commandLine: "source .venv/bin/activate"
-      workingDir: ${PROJECT_SOURCE}
+ # - id: activate-venv
+   # exec:
+    #  component: py
+    #  commandLine: "source .venv/bin/activate"
+     # workingDir: ${PROJECT_SOURCE}
   
-  - id: pip-install-requirements
-    exec:
-      commandLine: "pip install -r requirements.txt"
-      workingDir: ${PROJECT_SOURCE}
-      component: py
+ # - id: pip-install-requirements
+  #  exec:
+     # commandLine: "pip install -r requirements.txt"
+    #  workingDir: ${PROJECT_SOURCE}
+    #  component: py
 
-  - id: setup-env
-    composite:
-      commands:
-        - create-venv
-        - activate-venv
-        - pip-install-requirements
-      group:
-        kind: run
-        isDefault: true
+  #- id: setup-env
+  #  composite:
+   #   commands:
+    #    - create-venv
+     #   - activate-venv
+    #    - pip-install-requirements
+     # group:
+      #  kind: run
+       # isDefault: true
       
   - id: debug-py
     exec:
