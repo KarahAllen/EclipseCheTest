@@ -1,4 +1,4 @@
 {
-  "python.defaultInterpreterPath": "/.venv/bin/python"
+  "python.defaultInterpreterPath": "/projects/my-python-project/.venv/bin/python"
   "python.terminal.activateEnvInCurrentTerminal": true
 }
