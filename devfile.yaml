@@ -36,6 +36,19 @@ components:
       env:
         - name: DEBUG_PORT
           value: '5858'
+        - name: MONGO_URI
+          value: "mongodb://151.1.2.209:27017/DO_NOT_SELECT_TEST_ONLY"
+        - name: POSTGRES_HOST
+          value: "151.1.2.209"
+        - name: POSTGRES_DB
+          value: "EclipseCheTest"
+        - name: POSTGRES_USER
+          value: "postgres"
+        - name: POSTGRES_PASSWORD
+          value: "project45"
+        - name: POSTGRES_PORT
+          value: "5432"
+          
       
 commands:
   #- id: create-venv
