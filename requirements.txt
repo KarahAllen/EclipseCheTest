@@ -4,5 +4,6 @@ matplotlib
 plotly
 PyQt6
 pygame
-tk
 ipykernel
+pymongo
+psycopg2-binary
