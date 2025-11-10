@@ -2,6 +2,7 @@ import os
 import psycopg2
 from pymongo import MongoClient
 from psycopg2.extras import RealDictCursor
+from dotenv import load_dotenv
 load_dotenv()
 # -----------------------------
 # Load environment variables
@@ -52,11 +53,11 @@ if __name__ == "__main__":
     mongo_db = connect_mongo()
     pg_conn = connect_postgres()
 
-    if pg_conn:
+    if pg_conn is not None:
         with pg_conn.cursor() as cur:
             cur.execute("SELECT NOW();")
             print("PostgreSQL Time:", cur.fetchone())
         pg_conn.close()
 
-    if mongo_db:
+    if mongo_db is not None:
         print("MongoDB Collections:", mongo_db.list_collection_names())
