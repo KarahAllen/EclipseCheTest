@@ -1,0 +1,10 @@
+pandas
+numpy
+matplotlib
+plotly
+PyQt6
+pygame
+ipykernel
+pymongo
+psycopg2-binary
+python-dotenv
