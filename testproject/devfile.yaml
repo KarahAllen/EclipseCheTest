@@ -17,7 +17,7 @@ projects:
   - name: my-python-project
     git:
       remotes:
-        origin: https://github.jt4llc.com/lvops/artemis-Sandbox.git
+        origin: https://github.com/KarahAllen/EclipseCheTest/tree/main/testproject
 
 components:
   - name: py
