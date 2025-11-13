@@ -22,7 +22,7 @@ projects:
 components:
   - name: py
     container:
-      image: registry.access.redhat.com/ubi9/python-311:1-1707151277  # pinned for reproducibility
+      image: registry.access.redhat.com/ubi9/python-311
       mountSources: true
       args: [ "tail", "-f", "/dev/null" ]
       endpoints:
