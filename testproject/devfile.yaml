@@ -54,11 +54,17 @@ commands:
       component: py
 
   - id: setup-env
-    composite:
-      commands:
-        - create-venv
-        - activate-venv
-        - pip-install-requirements
+    exec:
+      component: py
+      commandLine: >
+      python -m venv .venv &&
+      . .venv/bin/activate &&
+      pip install --upgrade pip &&
+      pip install -r requirements.txt
+      workingDir: ${PROJECT_SOURCE}
+      group:
+        kind: build
+        isDefault: true
       
   - id: debug-py
     exec:
