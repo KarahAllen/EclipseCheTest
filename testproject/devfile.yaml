@@ -1,4 +1,4 @@
-schemaVersion: 2.3.0
+schemaVersion: 2.2.2
 metadata:
   name: python
   displayName: Python
@@ -70,3 +70,7 @@ commands:
       component: py
       group:
         kind: debug
+
+events:
+  postStart:
+    - setup-env
