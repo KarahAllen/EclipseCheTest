@@ -17,7 +17,7 @@ projects:
   - name: my-python-project
     git:
       remotes:
-        origin: https://github.com/KarahAllen/EclipseCheTest/tree/main/testproject
+        origin: https://github.com/KarahAllen/EclipseCheTest.git
 
 components:
   - name: py
