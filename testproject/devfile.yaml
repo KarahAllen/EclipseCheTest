@@ -59,9 +59,6 @@ commands:
         - create-venv
         - activate-venv
         - pip-install-requirements
-      group:
-        kind: init
-        isDefault: true
       
   - id: debug-py
     exec:
