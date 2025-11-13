@@ -56,11 +56,7 @@ commands:
   - id: setup-env
     exec:
       component: py
-      commandLine: >
-      python -m venv .venv &&
-      . .venv/bin/activate &&
-      pip install --upgrade pip &&
-      pip install -r requirements.txt
+      commandLine: python -m venv .venv && source .venv/bin/activate && pip install --upgrade pip && pip install -r requirements.txt
       workingDir: ${PROJECT_SOURCE}
       group:
         kind: build
